@@ -1,4 +1,4 @@
-#   Copyright (c) 2010-2011, Diaspora Inc.  This file is
+  #   Copyright (c) 2010-2011, Diaspora Inc.  This file is
 #   licensed under the Affero General Public License version 3 or later.  See
 #   the COPYRIGHT file.
 
@@ -19,6 +19,7 @@ class PostsController < ApplicationController
              :xml
 
   def new
+    puts params.inspect
     @feature_flag = FeatureFlagger.new(current_user) #I should be a global before filter so @feature_flag is accessible
     redirect_to "/stream" and return unless @feature_flag.new_publisher?
     render :text => "", :layout => true
